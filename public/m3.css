@@ -253,3 +253,58 @@ svg.logo { display: block; width: auto; color: var(--p-accent); fill: currentCol
 /* Los links internos (botones, menú, footer) bajan con scroll suave.
    Con "reducir movimiento" activado, system.css lo vuelve instantáneo. */
 html { scroll-behavior: smooth; }
+
+/* ================================================================ hero a pantalla completa
+   El render cubre toda la primera pantalla (el cielo queda arriba, detrás del título) y la
+   bajada con los botones va en un panel Verde Bosque translúcido para leerse sobre el edificio. */
+.hero--full { position: relative; overflow: hidden; isolation: isolate; }
+.hero--full .hero__bg {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 28%;
+}
+.hero--full .wrap { position: relative; }
+.hero--full h1 { max-width: 15em; margin: 0; color: var(--p-accent); }
+.hero__panel {
+  --ink: var(--p-inv-ink); --muted: var(--p-inv-muted);
+  --action: var(--p-inv-action); --action-ink: var(--p-inv-action-ink);
+  --bg: transparent; --line-strong: color-mix(in oklab, var(--p-inv-ink) 45%, transparent);
+  margin-top: var(--s-5); max-width: 520px; padding: var(--s-5) var(--s-6);
+  background: color-mix(in oklab, var(--p-accent) 78%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--ink);
+}
+.hero__panel .hero__lead { margin: 0 0 var(--s-5); color: var(--ink); font-size: var(--t-lead); line-height: 1.5; max-width: none; }
+.hero__panel .btn--secondary { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.hero__panel .btn--secondary:hover { background: color-mix(in oklab, var(--p-inv-ink) 12%, transparent); }
+@media (max-width: 639px) {
+  .hero--full .hero__bg { object-position: 62% 30%; }
+  .hero__panel { padding: var(--s-4); max-width: none; }
+  .hero__panel .hero__lead { font-size: var(--t-body); }
+}
+
+/* Header: logo a la izquierda; links y botón juntos a la derecha. */
+.nav .nav__links { justify-content: flex-end; }
+.nav .nav__bar { gap: var(--s-6); }
+
+/* Título del hero: 60 px en desktop, 28 px en el teléfono (cuatro líneas sobre el cielo). */
+.hero--full { --ly-h1: clamp(28px, 3.4vw + 11px, 60px); }
+/* En el teléfono el panel baja al pie del hero, sobre la calle, y deja ver el edificio. */
+@media (max-width: 639px) {
+  .hero--full > .wrap, .hero--full .hero__in { height: 100%; }
+  .hero--full .hero__in { display: flex; flex-direction: column; }
+  .hero--full .hero__panel { margin-top: auto; }
+  .hero--full .hero__bg { object-position: 62% 38%; }
+}
+
+/* Panel del hero más chico y más transparente (pedido del 26/11). El desenfoque de fondo
+   mantiene el contraste del texto aunque el verde sea más liviano. */
+.hero__panel {
+  max-width: 420px; padding: var(--s-4) var(--s-5);
+  background: color-mix(in oklab, var(--p-accent) 55%, transparent);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1); backdrop-filter: blur(10px) saturate(1.1);
+}
+.hero__panel .hero__lead { font-size: var(--t-body); line-height: 1.5; margin-bottom: var(--s-4); }
+@media (max-width: 639px) {
+  .hero__panel { padding: var(--s-4); }
+  .hero__panel .hero__lead { font-size: 15px; }
+}

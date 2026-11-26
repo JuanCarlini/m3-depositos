@@ -34,7 +34,7 @@ export default function Home() {
   const wa = whatsappUrl("operar");
   return (
     <>
-      <header className="nav nav--split">
+      <header className="nav">
         <div className="wrap nav__bar">
           <a className="skip-link" href="#top">Ir al contenido</a>
           <a className="nav__logo" href="#top" aria-label="M3 Depósitos, inicio">
@@ -58,33 +58,32 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="hero hero--product" data-enter="" aria-labelledby="hero-h">
+        {/* Hero: el render ocupa toda la pantalla; el título va sobre el cielo y la bajada con
+            los botones en un panel Verde Bosque translúcido para que se lea sobre el edificio. */}
+        <section className="hero hero--full" data-enter="" aria-labelledby="hero-h">
+          <img
+            className="hero__bg"
+            src="/img/fachada.jpg"
+            alt="Fachada de M3 Depósitos sobre la avenida: planta baja vidriada con locales y vehículos, oficinas arriba, terraza verde y el nombre en letras blancas sobre el techo"
+            width={2000}
+            height={1738}
+            fetchPriority="high"
+            data-source="client"
+            data-subject="la fachada del complejo"
+            data-enter-media=""
+          />
           <div className="wrap">
             <div className="hero-text hero__in">
-              <div className="hero__head">
-                <div>
-                  <h1 id="hero-h">Naves y depósitos en Fisherton, Rosario</h1>
-                  <p className="hero__lead">
-                    {resumen.navesM2} de naves en {resumen.navesCantidad} de {resumen.navesRango}, más locales
-                    comerciales y oficinas, en {calle}. Almacenamiento, comercio y trabajo en un mismo desarrollo.
-                  </p>
-                </div>
+              <h1 id="hero-h">Naves, oficinas y locales comerciales en Fisherton, Rosario</h1>
+              <div className="hero__panel">
+                <p className="hero__lead">
+                  {resumen.navesM2} de naves en {resumen.navesCantidad} de {resumen.navesRango}, más locales
+                  comerciales y oficinas, en {calle}. Almacenamiento, comercio y trabajo en un mismo desarrollo.
+                </p>
                 <div className="btn-row">
                   <a className="btn btn--primary" href="#contacto">{ACCION}<Flecha /></a>
                   <a className="btn btn--secondary" href="#unidades">Ver las unidades</a>
                 </div>
-              </div>
-              <div className="hero__stage">
-                <img
-                  src="/img/fachada.jpg"
-                  alt="Fachada de M3 Depósitos sobre la avenida: planta baja vidriada con locales y vehículos, oficinas arriba, terraza verde y el nombre en letras blancas sobre el techo"
-                  width={2000}
-                  height={820}
-                  style={{ ["--ly-pos" as string]: "50% 55%" }}
-                  fetchPriority="high"
-                  data-source="client"
-                  data-subject="la fachada del complejo"
-                />
               </div>
             </div>
           </div>

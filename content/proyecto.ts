@@ -19,11 +19,11 @@ export const marca = {
 
 /* Números del proyecto. */
 export const resumen = {
-  navesM2: "11.600 m²",
+  navesM2: "11.600 m²",
   navesCantidad: "15 unidades",
-  navesRango: "200 a 1.300 m²",
-  localesM2: "530 m²",
-  oficinasM2: "600 m²",
+  navesRango: "200 a 1.300 m²",
+  localesM2: "530 m²",
+  oficinasM2: "600 m²",
 };
 
 /* Tipos de unidad. */
@@ -60,7 +60,7 @@ export const unidades: {
     codigo: "O",
     nombre: "Oficinas",
     descripcion: "En la planta alta del frente, con áreas comunes y salida a la terraza verde.",
-    superficie: { valor: "Módulos de hasta 50 m²" },
+    superficie: { valor: "Módulos de hasta 50 m²" },
     detalle: { valor: `${resumen.oficinasM2} en total, con áreas comunes, servicios y terraza verde accesible` },
     plano: { frente: 7, fondo: 7, porton: 1, ph: true },
   },
