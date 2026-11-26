@@ -331,3 +331,17 @@ html { scroll-behavior: smooth; }
   .hero__panel { padding: 0; }
   .hero__panel .hero__lead { font-size: var(--t-body); }
 }
+
+/* ================================================================ header en Verde Bosque
+   Barra Verde Bosque, links Hueso, botón claro (Hueso con texto Bosque) y logo en Lima,
+   la combinación "Lima sobre Verde Bosque" del manual (2.3). Vale también para el menú del teléfono. */
+header.nav {
+  --bg: var(--p-accent); --ink: var(--p-inv-ink); --muted: var(--p-inv-muted);
+  --action: var(--p-bg); --action-ink: var(--p-accent);
+  --line: color-mix(in oklab, var(--p-inv-ink) 16%, transparent);
+  --line-strong: color-mix(in oklab, var(--p-inv-ink) 40%, transparent);
+  background: var(--bg); color: var(--ink); border-bottom-color: var(--line);
+}
+header.nav svg.logo { color: var(--p-inv-accent); }
+header.nav .btn--primary:hover { background: color-mix(in oklab, var(--p-bg) 86%, var(--p-accent)); }
+header.nav .nav__toggle { color: var(--ink); border-color: var(--line-strong); background: transparent; }
