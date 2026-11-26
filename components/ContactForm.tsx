@@ -108,13 +108,23 @@ export function ContactForm({ boton, whatsapp }: { boton: string; whatsapp: stri
         <textarea id="f-msg" name="mensaje" autoComplete="off" maxLength={2000} rows={3} />
       </div>
       <div className="field field--check">
-        <label>
-          <input type="checkbox" name="acepta" required aria-describedby="f-acepta-err" />
-          <span>
-            Acepto que M3 Depósitos guarde estos datos para responder mi consulta (
-            <a className="link" href="/privacidad/">privacidad</a>).
-          </span>
-        </label>
+        {/* El nombre accesible es solo el texto de la casilla; el link a privacidad queda fuera del label. */}
+        <div className="check">
+          <input
+            id="f-acepta"
+            type="checkbox"
+            name="acepta"
+            required
+            aria-labelledby="f-acepta-txt"
+            aria-describedby="f-acepta-err"
+          />
+          <p className="check__txt">
+            <label htmlFor="f-acepta" id="f-acepta-txt">
+              Acepto que M3 Depósitos guarde estos datos para responder mi consulta.
+            </label>{" "}
+            <a className="link" href="/privacidad/">Privacidad</a>
+          </p>
+        </div>
         <p className="field__error" id="f-acepta-err" hidden>Marcá la casilla para que podamos guardar tu consulta.</p>
       </div>
       <div className="hp" aria-hidden="true">

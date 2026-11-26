@@ -250,3 +250,9 @@ main > section.section:not([data-moment]) > .wrap, footer.closing > .wrap { heig
 /* El código de la planta entra en la nave más angosta sin tocar la pared. */
 .plan__code { font-size: 15px; }
 .rows.unidades > li { padding-block: var(--s-3); }
+
+/* Casilla de consentimiento: el texto es el label; el link a privacidad va al lado. */
+.field--check .check { display: flex; gap: var(--s-3); align-items: flex-start; }
+.field--check .check input { width: 20px; height: 20px; min-height: 0; flex: none; margin: 2px 0 0; padding: 0; accent-color: var(--action); }
+.field--check .check__txt { margin: 0; font: 400 var(--t-small)/1.5 var(--font-text); }
+.field--check .check__txt label { font: inherit; cursor: pointer; }
