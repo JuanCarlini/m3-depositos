@@ -308,3 +308,26 @@ html { scroll-behavior: smooth; }
   .hero__panel { padding: var(--s-4); }
   .hero__panel .hero__lead { font-size: 15px; }
 }
+
+/* ================================================================ hero sin box (prueba en dev)
+   La bajada y los botones van sueltos sobre la foto, al pie del hero, y un difuminado oscuro
+   que sube desde abajo les da contraste. El título sigue arriba, sobre el cielo. */
+.hero--full .hero__bg { z-index: -2; }
+.hero--full::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(to top,
+    color-mix(in oklab, var(--p-ink) 85%, transparent) 0%,
+    color-mix(in oklab, var(--p-ink) 62%, transparent) 30%,
+    color-mix(in oklab, var(--p-ink) 0%, transparent) 58%);
+}
+.hero--full > .wrap, .hero--full .hero__in { height: 100%; }
+.hero--full .hero__in { display: flex; flex-direction: column; }
+.hero__panel {
+  margin-top: auto; max-width: 480px; padding: 0;
+  background: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.hero__panel .hero__lead { font-size: var(--t-lead); text-shadow: 0 1px 12px color-mix(in oklab, var(--p-ink) 45%, transparent); }
+@media (max-width: 639px) {
+  .hero__panel { padding: 0; }
+  .hero__panel .hero__lead { font-size: var(--t-body); }
+}
