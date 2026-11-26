@@ -39,8 +39,11 @@ export function Cartel({ codigo, numero, palabra }: { codigo: string; numero: st
       <span className="cartel__num">{numero}</span>
       <span className="cartel__rule" />
       <span className="cartel__word">{palabra}</span>
-      <svg className="cartel__arrow" viewBox="0 0 40 40" aria-hidden="true">
-        <path d="M8 8 32 32M32 14v18H14" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="square" />
+      {/* Flecha de cartel como la del manual: cabeza en L de trazo grueso y vástago diagonal con
+          corte recto, dibujados como formas rellenas para que la unión quede limpia. */}
+      <svg className="cartel__arrow" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+        <path d="M29 11h5v23H11v-5h18z" />
+        <polygon points="8.77,5.23 32.77,29.23 29.23,32.77 5.23,8.77" />
       </svg>
     </div>
   );
