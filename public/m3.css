@@ -249,3 +249,7 @@ svg.logo { display: block; width: auto; color: var(--p-accent); fill: currentCol
 .nav .nav__logo svg.logo { height: 36px; }      /* isologotipo ≈ 172 px de ancho */
 .footer .nav__logo svg.logo { height: 44px; }
 @media (max-width: 639px) { .nav .nav__logo svg.logo { height: 28px; } }   /* ≈ 134 px, arriba del mínimo de 105 */
+
+/* Los links internos (botones, menú, footer) bajan con scroll suave.
+   Con "reducir movimiento" activado, system.css lo vuelve instantáneo. */
+html { scroll-behavior: smooth; }
