@@ -21,20 +21,6 @@
 h1, h2, .close__word { text-transform: uppercase; }
 h1 { letter-spacing: -0.03em; }
 
-/* ---------------------------------------------------------------- logo (manual 1.3) */
-.logo {
-  --x: 0.1em;
-  display: inline-flex; align-items: center; gap: calc(var(--x) * 4);
-  padding: calc(var(--x) * 3) calc(var(--x) * 3);
-  border: var(--x) solid currentColor;
-  font: 500 1em/0.74 var(--font-display); letter-spacing: 0.02em;
-  color: var(--ink); white-space: nowrap;
-}
-.logo--iso { gap: 0; }
-.nav .nav__logo { font-size: 20px; }          /* isologotipo ≈ 190 px de ancho: arriba del mínimo de 105 px */
-.footer .nav__logo { font-size: 24px; }
-@media (max-width: 639px) { .nav .nav__logo { font-size: 15px; } }
-
 /* ---------------------------------------------------------------- hero */
 .hero--product .hero__stage img { object-position: var(--ly-pos, 50% 50%); }
 /* Supply Mono es monoespaciada y más ancha que una grotesca: el h1 baja de 72 a 60 px para que
@@ -107,7 +93,7 @@ main h3 { font-size: var(--t-card); }
 .consulta__address { font: 400 var(--t-h3)/1.2 var(--font-display); font-style: normal; text-transform: uppercase; margin: var(--s-6) 0 var(--s-3); }
 .consulta__info > p { margin: var(--s-3) 0 0; }
 .consulta__form { grid-template-columns: minmax(0, 1fr); }
-.consulta__form textarea { min-height: 96px; }
+.consulta__form textarea { min-height: 80px; }
 .interes { grid-column: 1 / -1; border: 0; margin: 0; padding: 0; }
 .interes legend { padding: 0; margin-bottom: var(--s-2); }
 .interes__opts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
@@ -256,3 +242,10 @@ main > section.section:not([data-moment]) > .wrap, footer.closing > .wrap { heig
 .field--check .check input { width: 20px; height: 20px; min-height: 0; flex: none; margin: 2px 0 0; padding: 0; accent-color: var(--action); }
 .field--check .check__txt { margin: 0; font: 400 var(--t-small)/1.5 var(--font-text); }
 .field--check .check__txt label { font: inherit; cursor: pointer; }
+
+/* Logo oficial en SVG (reemplaza al armado en CSS): toma el color del texto. */
+/* Verde Bosque sobre fondos claros (manual 2.3). */
+svg.logo { display: block; width: auto; color: var(--p-accent); fill: currentColor; }
+.nav .nav__logo svg.logo { height: 36px; }      /* isologotipo ≈ 172 px de ancho */
+.footer .nav__logo svg.logo { height: 44px; }
+@media (max-width: 639px) { .nav .nav__logo svg.logo { height: 28px; } }   /* ≈ 134 px, arriba del mínimo de 105 */
