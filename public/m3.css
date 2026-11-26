@@ -1,0 +1,252 @@
+/*
+  Marca M3 Depósitos sobre el sistema base (public/assets). Va después de esos CSS.
+  Paleta del manual; la banda oscura es Verde Bosque y su
+  acento es Lima ("Lima solo como acento sobre Verde Bosque", manual 2.3).
+  Tipografías del manual: Supply Mono para títulos, etiquetas y códigos; IBM Plex Sans para leer.
+*/
+:root {
+  --p-bg: #fdfff2; --p-surface: #f0f3e6; --p-ink: #1d261e; --p-muted: #587355;
+  --p-accent: #203b32; --p-accent-ink: #fdfff2; --p-action: #203b32; --p-action-ink: #fdfff2;
+  --p-inv-bg: #203b32; --p-inv-surface: #2a4a3f; --p-inv-ink: #fdfff2; --p-inv-muted: #c3d0b8;
+  --p-inv-accent: #daff59; --p-inv-accent-ink: #203b32; --p-inv-action: #daff59; --p-inv-action-ink: #203b32;
+  --font-display: "Supply Mono", var(--font-plex-mono), ui-monospace, monospace;
+  --font-text: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: "Supply Mono", var(--font-plex-mono), ui-monospace, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.03em;
+}
+
+/* Títulos en mayúsculas como en el manual (portadas y carteles), sin espaciado extra. */
+h1, h2, .close__word { text-transform: uppercase; }
+h1 { letter-spacing: -0.03em; }
+
+/* ---------------------------------------------------------------- logo (manual 1.3) */
+.logo {
+  --x: 0.1em;
+  display: inline-flex; align-items: center; gap: calc(var(--x) * 4);
+  padding: calc(var(--x) * 3) calc(var(--x) * 3);
+  border: var(--x) solid currentColor;
+  font: 500 1em/0.74 var(--font-display); letter-spacing: 0.02em;
+  color: var(--ink); white-space: nowrap;
+}
+.logo--iso { gap: 0; }
+.nav .nav__logo { font-size: 20px; }          /* isologotipo ≈ 190 px de ancho: arriba del mínimo de 105 px */
+.footer .nav__logo { font-size: 24px; }
+@media (max-width: 639px) { .nav .nav__logo { font-size: 15px; } }
+
+/* ---------------------------------------------------------------- hero */
+.hero--product .hero__stage img { object-position: var(--ly-pos, 50% 50%); }
+/* Supply Mono es monoespaciada y más ancha que una grotesca: el h1 baja de 72 a 60 px para que
+   40 caracteres entren en dos líneas, y a 28 px en el teléfono. */
+.hero--product { --ly-h1: clamp(28px, 3.4vw + 11px, 60px); }
+@media (max-width: 639px) {
+  .hero--product .hero__stage { aspect-ratio: 4 / 3; }
+  #unidades, #servicios, #contacto { --hm: 2; }
+  main h2, .footer h2 { font-size: 24px; }   /* por debajo del h1 de 28 px */
+}
+
+/* Un solo tamaño de h3 en toda la página. */
+main h3 { font-size: var(--t-card); }
+
+/* ---------------------------------------------------------------- unidades: planta + texto + datos */
+.rows.unidades > li { grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 4fr); gap: var(--s-5); align-items: stretch; padding-block: var(--s-4); }
+.rows.unidades > li > * { grid-row: 1; }
+.rows.unidades > li > .unidades__plan { grid-column: 1; }
+.rows.unidades > li > .unidades__body { grid-column: 2; }
+.rows.unidades > li > .unidades__data { grid-column: 3; }
+.unidades__body h3 { font: 500 var(--t-card)/1.2 var(--font-display); text-transform: uppercase; margin: 0 0 var(--s-2); hyphens: none; }
+.unidades__body p { margin: 0; max-width: 46ch; }
+.unidades__data { display: grid; align-content: start; gap: var(--s-3); margin: 0; }
+.unidades__data dt { font: 500 var(--t-label)/1.3 var(--font-text); color: var(--muted); }
+.unidades__data dd { margin: 0; font: 400 18px/1.35 var(--font-display); }
+.plan { display: block; width: 100%; height: auto; max-height: 160px; background: var(--surface); }
+.plan__wall { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: square; }
+.plan__gate { fill: none; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 3 3; }
+.plan__code { font: 500 18px var(--font-display); fill: var(--accent); }
+.plan__dim { font: 400 11px var(--font-display); fill: var(--muted); }
+@media (max-width: 1023px) {
+  .rows.unidades > li { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .rows.unidades > li > .unidades__plan { grid-row: 1 / span 2; }
+  .rows.unidades > li > .unidades__body { grid-column: 2; grid-row: 1; }
+  .rows.unidades > li > .unidades__data { grid-column: 2; grid-row: 2; }
+}
+@media (max-width: 639px) {
+  .rows.unidades > li { grid-template-columns: 120px minmax(0, 1fr); gap: var(--s-3) var(--s-4); }
+  .rows.unidades > li > .unidades__data { grid-column: 1 / -1; grid-row: 3; grid-template-columns: 1fr 1fr; }
+  .rows.unidades > li > .unidades__plan { grid-row: 1 / span 2; }
+}
+
+/* ---------------------------------------------------------------- servicios (banda bosque) */
+.servicios { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-5); }
+.servicios__head { grid-column: 1 / span 5; display: flex; flex-direction: column; }
+.servicios__list { grid-column: 7 / span 6; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6) var(--s-5); align-content: start; }
+.servicios__list li { border-top: 1px solid var(--line-strong); padding-top: var(--s-4); }
+.servicios__list h3 { font: 500 var(--t-card)/1.3 var(--font-text); margin: 0 0 var(--s-2); color: var(--accent); }
+.servicios__list p { margin: 0; }
+/* el cartel de señalética del manual (p. 20): D 01, una raya, la palabra y la flecha */
+.cartel {
+  margin-top: var(--s-6); flex: 1 1 auto; min-height: 260px; padding: var(--s-6);
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto auto; align-items: end;
+  background: var(--p-ink); color: var(--accent); font-family: var(--font-display);
+}
+.cartel__code, .cartel__num { grid-row: 1; align-self: start; font-size: clamp(56px, 6vw, 96px); line-height: .8; }
+.cartel__rule { grid-row: 3; grid-column: 1; width: 40px; height: 5px; background: currentColor; margin-bottom: var(--s-3); }
+.cartel__word { grid-row: 4; grid-column: 1; font-size: clamp(24px, 2.4vw, 36px); line-height: 1; }
+.cartel__arrow { grid-row: 3 / span 2; grid-column: 2; justify-self: end; width: clamp(56px, 6vw, 88px); height: auto; }
+@media (max-width: 1023px) {
+  .servicios__head, .servicios__list { grid-column: 1 / -1; }
+  .cartel { min-height: 200px; }
+}
+@media (max-width: 639px) {
+  .servicios__list { grid-template-columns: 1fr; gap: var(--s-4); }
+  .cartel { min-height: 160px; padding: var(--s-4); }
+}
+
+/* ---------------------------------------------------------------- contacto */
+.consulta__address { font: 400 var(--t-h3)/1.2 var(--font-display); font-style: normal; text-transform: uppercase; margin: var(--s-6) 0 var(--s-3); }
+.consulta__info > p { margin: var(--s-3) 0 0; }
+.consulta__form { grid-template-columns: minmax(0, 1fr); }
+.consulta__form textarea { min-height: 96px; }
+.interes { grid-column: 1 / -1; border: 0; margin: 0; padding: 0; }
+.interes legend { padding: 0; margin-bottom: var(--s-2); }
+.interes__opts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
+.interes__opts label { display: flex; gap: var(--s-3); align-items: center; min-height: 48px; padding: var(--s-2) var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm); font: 500 var(--t-body)/1.3 var(--font-text); cursor: pointer; }
+.interes__opts input { width: 18px; height: 18px; min-height: 0; flex: none; margin: 0; padding: 0; accent-color: var(--action); }
+.interes__opts label:has(input:checked) { border-color: var(--action); box-shadow: inset 0 0 0 1px var(--action); }
+.field--check { grid-column: 1 / -1; }
+.field--check label { display: flex; gap: var(--s-3); align-items: flex-start; font: 400 var(--t-small)/1.5 var(--font-text); }
+.field--check input { width: 20px; height: 20px; min-height: 0; flex: none; margin: 2px 0 0; padding: 0; accent-color: var(--action); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 639px) { .interes__opts { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------- ajustes de layout */
+.plan { max-height: 128px; }
+@media (min-width: 1024px) {
+  .servicios { min-height: calc(100svh - var(--padt) - var(--padb)); }
+  .servicios__head { min-height: 100%; }
+}
+@media (max-width: 639px) {
+  .rows.unidades > li { grid-template-columns: 144px minmax(0, 1fr); }
+  .plan { max-height: none; }
+  .cartel { min-height: 240px; }
+}
+.interes__opts { grid-template-columns: 1fr; gap: var(--s-1); }
+.interes__opts label { border: 0; padding: 0; min-height: 44px; }
+.interes__opts label:has(input:checked) { box-shadow: none; }
+/* croquis de la esquina */
+.croquis { display: block; width: 100%; height: auto; margin-top: var(--s-5); background: var(--surface); }
+.croquis__calle { fill: none; stroke: var(--p-ink); stroke-opacity: .14; stroke-width: 34; }
+.croquis__nombre { font: 500 12px var(--font-display); fill: var(--muted); letter-spacing: .02em; }
+.croquis__lote { fill: var(--accent); }
+.croquis__lote-txt { font: 500 13px var(--font-display); fill: var(--accent-ink); }
+
+/* ================================================================ ajustes de diseño (26/11) */
+
+/* Esquinas rectas en todo el sitio, como el marco del logo. */
+html[data-radius] { --r-lg: 0px; --r-md: 0px; --r-sm: 0px; --r-btn: 0px; }
+
+/* Mono a -0.01em: el aire de la señalética del manual. */
+.hero h1 { letter-spacing: -0.01em; }
+
+/* Una sola flecha: la diagonal ↘ de los carteles, en botones y links. */
+.link::after {
+  content: ""; width: 0.7em; height: 0.7em; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 2l8 8M10 3.5V10H3.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 2l8 8M10 3.5V10H3.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (hover: hover) and (pointer: fine) { .link:hover::after { transform: translate(2px, 2px); } }
+.m3-arrow path { stroke-linecap: square; stroke-linejoin: miter; }
+
+/* Un solo estilo de h3: Supply Mono 500 en mayúsculas. */
+main h3, .footer h3,
+[data-moment="photo-chapters"].is-live .mo-ph__ch h3,
+[data-moment="photo-chapters"] .mo-ph__ch h3 {
+  font-family: var(--font-display); font-weight: 500; font-size: var(--t-card); line-height: 1.25;
+  letter-spacing: 0; text-transform: uppercase;
+}
+
+/* Historia de fotos: el texto en una placa Bosque abajo a la derecha, como un cartel; sin contador. */
+[data-moment="photo-chapters"].is-live .mo-ph__panel {
+  left: auto; right: var(--s-5); width: min(400px, calc(100% - 2 * var(--s-5)));
+  background: var(--p-accent); color: var(--p-inv-ink);
+}
+[data-moment="photo-chapters"].is-live .mo-ph__panel h3 { color: var(--p-inv-accent); }
+[data-moment="photo-chapters"].is-live .mo-ph__panel p { color: var(--p-inv-ink); }
+[data-moment="photo-chapters"].is-live .mo-ph__count { display: none; }
+@media (max-width: 639px) {
+  [data-moment="photo-chapters"].is-live .mo-ph__panel { left: var(--s-3); right: var(--s-3); width: auto; }
+}
+
+/* Unidades: plantas con trazo firme y medidas legibles, valores en Plex. */
+.plan { background: none; max-height: 150px; }
+.plan__wall { stroke-width: 4; }
+.plan__gate { stroke-width: 1.5; }
+.plan__code { font-size: 22px; }
+.plan__dim { font-size: 17px; fill: var(--ink); }
+.unidades__data dd { font: 500 var(--t-body)/1.45 var(--font-text); }
+.unidades__cta { margin-top: var(--s-3); }
+
+/* Contacto: la dirección a tamaño de bajada (no compite con el h2); en el teléfono, el formulario
+   va pegado al título y la ubicación queda debajo. */
+.consulta__address { font-size: var(--t-lead); }
+.consulta__nota { margin: 0; font: 400 var(--t-small)/1.5 var(--font-text); color: var(--muted); }
+@media (max-width: 1023px) {
+  .consulta { display: flex; flex-direction: column; gap: var(--s-6); }
+  .consulta > .consulta__info { display: contents; }
+  .consulta__head { order: 1; margin-bottom: 0; }
+  .consulta__formcol { order: 2; }
+  .consulta__lugar { order: 3; }
+}
+
+/* Footer: links con área de toque de 44 px en el teléfono. */
+.footer__copy a { margin-left: var(--s-3); }
+@media (max-width: 639px) { .footer__col a { display: inline-flex; align-items: center; min-height: 44px; } }
+
+/* En tablet el contacto apilado ocupa dos pantallas. */
+@media (min-width: 640px) and (max-width: 1023px) { #contacto { --h: 2; } }
+
+/* ================================================================ pedido del cliente (26/11)
+   1. Ninguna sección se monta sobre la siguiente: en cualquier alto de pantalla, la sección
+      ocupa al menos sus pantallas y crece si el contenido no entra (antes, a más de 1280 px
+      de ancho el alto era fijo y Unidades se metía en la banda verde). */
+main > section.section:not([data-moment]), footer.closing {
+  height: auto;
+  min-height: calc(var(--h, 1) * 100vh); min-height: calc(var(--h, 1) * 100svh);
+}
+main > section.section:not([data-moment]) > .wrap, footer.closing > .wrap { height: auto; }
+
+/* 2. Servicios ordenado como una tabla de señalética: a la izquierda el título, la bajada y el
+      cartel; a la derecha una lista de filas alineadas (nombre en Lima | descripción). */
+.servicios { align-items: start; min-height: 0; }
+.servicios__head { min-height: 0; }
+.servicios__list {
+  grid-column: 6 / span 7; grid-template-columns: 1fr; gap: 0;
+  border-top: 1px solid color-mix(in oklab, var(--p-inv-ink) 28%, transparent);
+}
+.servicios__list li {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-5);
+  align-items: baseline; padding: var(--s-4) 0; border-top: 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--p-inv-ink) 28%, transparent);
+}
+.servicios__list h3 { margin: 0; color: var(--p-inv-accent); }
+.servicios__list p { margin: 0; color: var(--p-inv-ink); }
+/* el cartel: contorno Lima sobre Bosque, como el marco del logo (no una caja más oscura) */
+.cartel {
+  flex: none; min-height: 0; aspect-ratio: 4 / 3; max-width: 360px; margin-top: var(--s-7);
+  background: transparent; border: 3px solid var(--p-inv-accent); padding: var(--s-5);
+}
+.cartel__code, .cartel__num { font-size: clamp(48px, 4.4vw, 72px); }
+.cartel__word { font-size: clamp(22px, 1.8vw, 28px); }
+.cartel__arrow { width: clamp(44px, 4vw, 64px); }
+@media (max-width: 1023px) {
+  .servicios__list { grid-column: 1 / -1; }
+  .cartel { display: none; }
+}
+@media (max-width: 639px) {
+  .servicios__list li { grid-template-columns: 1fr; gap: var(--s-1); }
+}
+
+/* El código de la planta entra en la nave más angosta sin tocar la pared. */
+.plan__code { font-size: 15px; }
+.rows.unidades > li { padding-block: var(--s-3); }
