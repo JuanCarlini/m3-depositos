@@ -22,7 +22,8 @@ export async function enviarLead(lead: Lead): Promise<void> {
     method: "POST",
     headers: {
       apikey: KEY,
-      Authorization: `Bearer ${KEY}`,
+      // La clave publicable (sb_publishable_...) va solo en apikey; la anon vieja (JWT) también como Bearer.
+      ...(KEY.startsWith("eyJ") ? { Authorization: `Bearer ${KEY}` } : {}),
       "Content-Type": "application/json",
       Prefer: "return=minimal",
     },
