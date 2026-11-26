@@ -16,9 +16,9 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
-const titulo = "M3 Depósitos: naves, depósitos y oficinas en Fisherton, Rosario";
+const titulo = "M3 Depósitos: naves, locales y oficinas en Fisherton, Rosario";
 const descripcion =
-  "Complejo de naves y depósitos con portón propio, acceso controlado y playa de maniobras en Wilde y Mendoza, Fisherton.";
+  "11.600 m² de naves en 15 unidades de 200 a 1.300 m², locales comerciales y oficinas en Wilde y Mendoza, Fisherton, Rosario.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: titulo,
-    description: "Naves, depósitos y oficinas en Wilde y Mendoza, Fisherton, Rosario.",
+    description: "Naves, locales comerciales y oficinas en Wilde y Mendoza, Fisherton, Rosario.",
     images: ["/share.jpg"],
   },
   twitter: { card: "summary_large_image" },

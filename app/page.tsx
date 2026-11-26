@@ -1,14 +1,14 @@
 /*
   M3 Depósitos, landing.
-  Secciones: hero (fachada) · #complejo historia de fotos (contenedor, portón, señalética) ·
-  #unidades tabla de superficies · #servicios banda Verde Bosque con el cartel D 01 ·
+  Secciones: hero (fachada) · #complejo historia de fotos (oficinas, acceso, calle interna) ·
+  #unidades tabla de superficies · #servicios infraestructura sobre Verde Bosque con el cartel D 01 ·
   #contacto ubicación + formulario · footer (cierre + links).
 */
 import { ContactForm } from "@/components/ContactForm";
 import { Isologotipo } from "@/components/Logo";
 import { Cartel, UnitPlan } from "@/components/UnitPlan";
 import { Croquis } from "@/components/Croquis";
-import { marca, precio, rangoHero, servicios, unidades, type Dato } from "@/content/proyecto";
+import { marca, precio, resumen, servicios, unidades, type Dato } from "@/content/proyecto";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 const ACCION = "Pedir disponibilidad";
@@ -43,7 +43,7 @@ export default function Home() {
           <nav className="nav__links" aria-label="Principal">
             <div className="nav__item"><a className="nav__link" href="#complejo">Complejo</a></div>
             <div className="nav__item"><a className="nav__link" href="#unidades">Unidades</a></div>
-            <div className="nav__item"><a className="nav__link" href="#servicios">Servicios</a></div>
+            <div className="nav__item"><a className="nav__link" href="#servicios">Infraestructura</a></div>
             <div className="nav__item"><a className="nav__link" href="#contacto">Ubicación</a></div>
           </nav>
           <div className="nav__actions">
@@ -65,8 +65,8 @@ export default function Home() {
                 <div>
                   <h1 id="hero-h">Naves y depósitos en Fisherton, Rosario</h1>
                   <p className="hero__lead">
-                    Naves, depósitos y oficinas de <D d={rangoHero} /> con acceso propio en {calle}. Cada
-                    empresa usa su unidad; el complejo se ocupa del acceso, la vigilancia y la playa de camiones.
+                    {resumen.navesM2} de naves en {resumen.navesCantidad} de {resumen.navesRango}, más locales
+                    comerciales y oficinas, en {calle}. Almacenamiento, comercio y trabajo en un mismo desarrollo.
                   </p>
                 </div>
                 <div className="btn-row">
@@ -75,13 +75,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="hero__stage">
-                {/* Render de fachada del manual de marca: reemplazar por el render final del proyecto. */}
                 <img
                   src="/img/fachada.jpg"
-                  alt="Fachada de M3 Depósitos sobre la avenida: tres pisos de oficinas con plantas, el cartel verde con el nombre sobre el ingreso de camiones y utilitarios estacionados"
-                  width={1600}
-                  height={1103}
-                  style={{ ["--ly-pos" as string]: "50% 62%" }}
+                  alt="Fachada de M3 Depósitos sobre la avenida: planta baja vidriada con locales y vehículos, oficinas arriba, terraza verde y el nombre en letras blancas sobre el techo"
+                  width={2000}
+                  height={820}
+                  style={{ ["--ly-pos" as string]: "50% 55%" }}
                   fetchPriority="high"
                   data-source="client"
                   data-subject="la fachada del complejo"
@@ -94,30 +93,30 @@ export default function Home() {
         <section className="section" id="complejo" data-moment="photo-chapters" aria-labelledby="complejo-h">
           <div className="wrap mo-ph">
             <div className="mo-ph__head">
-              <h2 id="complejo-h">El complejo, del ingreso a tu portón</h2>
-              <p>Un solo acceso controlado, calles internas para camiones y cada unidad con su número y su portón.</p>
+              <h2 id="complejo-h">El desarrollo, de la avenida a la nave</h2>
+              <p>Al frente, locales y oficinas con terraza verde; detrás, la calle interna que lleva a cada nave.</p>
             </div>
             <ol className="mo-ph__list">
               <li className="mo-ph__ch">
                 <figure className="mo-ph__pic">
-                  <img src="/img/contenedor.jpg" alt="Autoelevador verde levantando un contenedor con la marca M3 Depósitos dentro de una nave de hormigón" width={1800} height={1260} loading="lazy" data-source="client" data-subject="carga dentro de una nave" />
+                  <img style={{ objectPosition: "50% 75%" }} src="/img/ingreso-oficinas.jpg" alt="Frente vidriado de M3 Depósitos en perspectiva, con el nombre sobre la terraza verde, plantas y vereda de adoquines" width={1290} height={860} loading="lazy" data-source="client" data-subject="las oficinas del frente" />
                 </figure>
-                <h3>Carga y descarga adentro del predio</h3>
-                <p>Los camiones entran, maniobran y descargan en las calles internas, sin cortar la calle de enfrente.</p>
+                <h3>Oficinas con terraza verde</h3>
+                <p>Módulos de hasta 50 m² en la planta alta, con áreas comunes, servicios y una terraza verde accesible.</p>
               </li>
               <li className="mo-ph__ch">
                 <figure className="mo-ph__pic">
-                  <img style={{ objectPosition: "50% 80%" }} src="/img/porton.jpg" alt="Portón de chapa verde oscuro con el código D 01 pintado en lima y dos defensas lima a los costados" width={1800} height={1200} loading="lazy" data-source="client" data-subject="el portón de una unidad" />
+                  <img style={{ objectPosition: "50% 60%" }} src="/img/acceso.jpg" alt="Ingreso de vehículos bajo el edificio de oficinas, con barrera, garita y locales vidriados a cada lado" width={1720} height={1147} loading="lazy" data-source="client" data-subject="el acceso al predio" />
                 </figure>
-                <h3>Cada unidad con su portón</h3>
-                <p>Entrás con el vehículo hasta tu puerta y cerrás con tu llave. Nadie pasa por tu espacio para llegar al suyo.</p>
+                <h3>Locales y acceso sobre el frente</h3>
+                <p>Locales con office, sanitarios y doble altura a los lados del ingreso que lleva a la calle interna.</p>
               </li>
               <li className="mo-ph__ch">
                 <figure className="mo-ph__pic">
-                  <img src="/img/senaletica.jpg" alt="Cartel verde colgado de una estantería industrial con el código D 01 y una flecha en diagonal" width={1800} height={1200} loading="lazy" data-source="client" data-subject="la señalética interna" />
+                  <img src="/img/calle-interna.jpg" alt="Calle interna de hormigón entre dos filas de naves con portones numerados y un camión estacionado" width={1720} height={1147} loading="lazy" data-source="client" data-subject="la calle interna y las naves" />
                 </figure>
-                <h3>Todo numerado y señalizado</h3>
-                <p>Cada nave, depósito y oficina tiene su código. Un flete o un proveedor llega a tu portón sin preguntar.</p>
+                <h3>Naves sobre la calle interna</h3>
+                <p>Quince naves con portón numerado, piso de hormigón llaneado para alto tránsito y cerramientos con panel Cover.</p>
               </li>
             </ol>
           </div>
@@ -127,15 +126,17 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head">
               <h2 id="unidades-h">Unidades y superficies</h2>
-              <p>Tres tipos de unidad en el mismo predio, en venta y en alquiler. <D d={precio} />: te mandamos el plano y el valor de las que estén libres.</p>
+              <p>{resumen.navesM2} de naves, {resumen.localesM2} de locales comerciales y {resumen.oficinasM2} de oficinas en un mismo desarrollo. <D d={precio} />: te mandamos el plano y el valor de las unidades libres.</p>
             </div>
             <ul className="rows rows--spec unidades">
               {unidades.map((u) => (
                 <li key={u.id} id={u.id}>
-                  <div className="unidades__plan" data-assumed="">
+                  <div className="unidades__plan" {...(u.plano.ph ? { "data-assumed": "" } : {})}>
                     <UnitPlan
                       codigo={`${u.codigo} 01`}
-                      {...u.plano}
+                      frente={u.plano.frente}
+                      fondo={u.plano.fondo}
+                      porton={u.plano.porton}
                       label={`Planta esquemática de ${u.nombre.toLowerCase()}: ${u.plano.frente} m de frente por ${u.plano.fondo} m de fondo`}
                     />
                   </div>
@@ -160,9 +161,9 @@ export default function Home() {
           <div className="wrap">
             <div className="servicios">
               <div className="section-head servicios__head">
-                <h2 id="servicios-h">Servicios del complejo</h2>
-                <p>Lo que cada empresa tendría que resolver sola en un galpón suelto, acá ya está resuelto y se paga en las expensas.</p>
-                <Cartel codigo="D" numero="01" palabra="Servicios" />
+                <h2 id="servicios-h">Infraestructura del complejo</h2>
+                <p>Servicios y terminaciones que tienen las naves de todo el desarrollo.</p>
+                <Cartel codigo="N" numero="01" palabra="Naves" />
               </div>
               <ul className="servicios__list">
                 {servicios.map((s) => (
@@ -208,7 +209,7 @@ export default function Home() {
           <div className="closing__cta close--type">
             <div className="section-head">
               <h2 id="close-h">Unidades libres en {calle}</h2>
-              <p>Naves, depósitos y oficinas en {barrio}. Te respondemos por email con planos y precios.</p>
+              <p>Naves, locales y oficinas en {barrio}. Te respondemos por email con planos y precios.</p>
             </div>
             <a className="btn btn--primary btn--xl btn--wide" href="#contacto">{ACCION}<Flecha /></a>
           </div>
@@ -216,14 +217,14 @@ export default function Home() {
             <div className="grid">
               <div className="span-4 stack-4">
                 <a className="nav__logo" href="#top" aria-label="M3 Depósitos, volver arriba"><Isologotipo /></a>
-                <p className="footer__lede">Naves, depósitos y oficinas en {barrio}, {ciudad}.</p>
+                <p className="footer__lede">Naves, locales y oficinas en {barrio}, {ciudad}.</p>
               </div>
               <div className="span-2 start-9 footer__col">
                 <h3>Complejo</h3>
                 <ul>
                   <li><a href="#complejo">El predio</a></li>
                   <li><a href="#unidades">Unidades</a></li>
-                  <li><a href="#servicios">Servicios</a></li>
+                  <li><a href="#servicios">Infraestructura</a></li>
                 </ul>
               </div>
               <div className="span-2 start-11 footer__col">
