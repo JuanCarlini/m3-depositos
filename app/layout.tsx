@@ -63,9 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <link rel="stylesheet" href="/assets/system.css" />
-        <link rel="stylesheet" href="/assets/ui/cards.css" />
         <link rel="stylesheet" href="/assets/motion/motion.css" />
-        <link rel="stylesheet" href="/assets/layout/layout.css" />
         <link rel="stylesheet" href="/assets/moments/photo-chapters/moment.css" />
         <link rel="stylesheet" href="/m3.css" />
         <script

@@ -1,15 +1,12 @@
 /*
   Datos del proyecto M3 Depósitos, en un solo lugar.
 
-  PH = placeholder. Todo valor marcado `ph: true` es provisorio: se muestra en la página con
-  `data-assumed` y hay que reemplazarlo por el dato real antes de publicar.
+  PH = placeholder: las plantas marcadas `ph: true` son provisorias (se muestran con
+  `data-assumed`) y hay que reemplazarlas por las medidas reales.
   Superficies, cantidades y características: ficha del proyecto (26/11/2026).
 */
 
-export type Dato = { valor: string; ph?: boolean };
-
 export const marca = {
-  nombre: "M3 Depósitos",
   ubicacion: {
     calle: "Wilde y Mendoza",
     barrio: "Fisherton",
@@ -32,8 +29,8 @@ export const unidades: {
   codigo: string;
   nombre: string;
   descripcion: string;
-  superficie: Dato;
-  detalle: Dato;
+  superficie: string;
+  detalle: string;
   /* Planta esquemática, en metros. PH: tomar del plano tipo de cada unidad. */
   plano: { frente: number; fondo: number; porton: number; ph: boolean };
 }[] = [
@@ -42,8 +39,8 @@ export const unidades: {
     codigo: "N",
     nombre: "Naves",
     descripcion: `${resumen.navesM2} de naves en ${resumen.navesCantidad}, para operaciones de distinta escala. Se puede incorporar entrepiso.`,
-    superficie: { valor: resumen.navesRango },
-    detalle: { valor: "Piso de hormigón llaneado para alto tránsito y cerramientos con panel Cover" },
+    superficie: resumen.navesRango,
+    detalle: "Piso de hormigón llaneado para alto tránsito y cerramientos con panel Cover",
     plano: { frente: 20, fondo: 40, porton: 5, ph: true },
   },
   {
@@ -51,8 +48,8 @@ export const unidades: {
     codigo: "L",
     nombre: "Locales comerciales",
     descripcion: "Sobre el frente del desarrollo, para comercio y atención al público.",
-    superficie: { valor: `${resumen.localesM2} en total` },
-    detalle: { valor: "Office, sanitarios y espacios en doble altura" },
+    superficie: `${resumen.localesM2} en total`,
+    detalle: "Office, sanitarios y espacios en doble altura",
     plano: { frente: 10, fondo: 15, porton: 3, ph: true },
   },
   {
@@ -60,16 +57,16 @@ export const unidades: {
     codigo: "O",
     nombre: "Oficinas",
     descripcion: "En la planta alta del frente, con áreas comunes y salida a la terraza verde.",
-    superficie: { valor: "Módulos de hasta 50 m²" },
-    detalle: { valor: `${resumen.oficinasM2} en total, con áreas comunes, servicios y terraza verde accesible` },
+    superficie: "Módulos de hasta 50 m²",
+    detalle: `${resumen.oficinasM2} en total, con áreas comunes, servicios y terraza verde accesible`,
     plano: { frente: 7, fondo: 7, porton: 1, ph: true },
   },
 ];
 
-export const precio: Dato = { valor: "Precio a consultar" };
+export const precio = "Precio a consultar";
 
 /* Infraestructura del complejo (ficha del proyecto). */
-export const servicios: { titulo: string; texto: string; ph?: boolean }[] = [
+export const servicios: { titulo: string; texto: string }[] = [
   { titulo: "Red de desagües", texto: "Desagües en todo el predio y las calles internas." },
   { titulo: "Alumbrado", texto: "Iluminación en calles internas y accesos." },
   { titulo: "Agua potable", texto: "Conexión de agua potable en cada unidad." },
@@ -84,8 +81,5 @@ export const servicios: { titulo: string; texto: string; ph?: boolean }[] = [
 */
 export const contacto = {
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
-  mensajes: {
-    invertir: "Hola, quiero invertir en una unidad de M3 Depósitos. ¿Me pasan superficies, precios y disponibilidad?",
-    operar: "Hola, busco una nave, local u oficina en M3 Depósitos para mi empresa. ¿Me pasan superficies y disponibilidad?",
-  },
+  mensaje: "Hola, busco una nave, local u oficina en M3 Depósitos. ¿Me pasan superficies, precios y disponibilidad?",
 };

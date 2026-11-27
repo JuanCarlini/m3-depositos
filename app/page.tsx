@@ -8,17 +8,12 @@ import { ContactForm } from "@/components/ContactForm";
 import { Isologotipo } from "@/components/Logo";
 import { Cartel, UnitPlan } from "@/components/UnitPlan";
 import { Croquis } from "@/components/Croquis";
-import { marca, precio, resumen, servicios, unidades, type Dato } from "@/content/proyecto";
+import { marca, precio, resumen, servicios, unidades } from "@/content/proyecto";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 const ACCION = "Pedir disponibilidad";
 const { calle, barrio, ciudad } = marca.ubicacion;
 const mapa = `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${calle}, ${barrio}, ${ciudad}`)}`;
-
-/* Un dato provisorio lleva data-assumed, así es fácil encontrarlo para reemplazarlo. */
-function D({ d }: { d: Dato }) {
-  return d.ph ? <span data-assumed="">{d.valor}</span> : <>{d.valor}</>;
-}
 
 function Flecha() {
   return (
@@ -31,7 +26,7 @@ function Flecha() {
 }
 
 export default function Home() {
-  const wa = whatsappUrl("operar");
+  const wa = whatsappUrl();
   return (
     <>
       <header className="nav">
@@ -60,7 +55,7 @@ export default function Home() {
       <main id="top">
         {/* Hero: el render ocupa toda la pantalla; el título va sobre el cielo y la bajada con
             los botones en un panel Verde Bosque translúcido para que se lea sobre el edificio. */}
-        <section className="hero hero--full" data-enter="" aria-labelledby="hero-h">
+        <section className="hero hero--full" aria-labelledby="hero-h">
           <img
             className="hero__bg"
             src="/img/fachada.jpg"
@@ -70,7 +65,6 @@ export default function Home() {
             fetchPriority="high"
             data-source="client"
             data-subject="la fachada del complejo"
-            data-enter-media=""
           />
           <div className="wrap">
             <div className="hero-text hero__in">
@@ -125,7 +119,7 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head">
               <h2 id="unidades-h">Unidades y superficies</h2>
-              <p>{resumen.navesM2} de naves, {resumen.localesM2} de locales comerciales y {resumen.oficinasM2} de oficinas en un mismo desarrollo. <D d={precio} />: te mandamos el plano y el valor de las unidades libres.</p>
+              <p>{resumen.navesM2} de naves, {resumen.localesM2} de locales comerciales y {resumen.oficinasM2} de oficinas en un mismo desarrollo. {precio}: te mandamos el plano y el valor de las unidades libres.</p>
             </div>
             <ul className="rows rows--spec unidades">
               {unidades.map((u) => (
@@ -147,8 +141,8 @@ export default function Home() {
                     </a>
                   </div>
                   <dl className="unidades__data">
-                    <div><dt>Superficie</dt><dd><D d={u.superficie} /></dd></div>
-                    <div><dt>Características</dt><dd><D d={u.detalle} /></dd></div>
+                    <div><dt>Superficie</dt><dd>{u.superficie}</dd></div>
+                    <div><dt>Características</dt><dd>{u.detalle}</dd></div>
                   </dl>
                 </li>
               ))}
@@ -166,7 +160,7 @@ export default function Home() {
               </div>
               <ul className="servicios__list">
                 {servicios.map((s) => (
-                  <li key={s.titulo} {...(s.ph ? { "data-assumed": "" } : {})}>
+                  <li key={s.titulo}>
                     <h3>{s.titulo}</h3>
                     <p>{s.texto}</p>
                   </li>
