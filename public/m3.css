@@ -345,3 +345,21 @@ header.nav {
 header.nav svg.logo { color: var(--p-inv-accent); }
 header.nav .btn--primary:hover { background: color-mix(in oklab, var(--p-bg) 86%, var(--p-accent)); }
 header.nav .nav__toggle { color: var(--ink); border-color: var(--line-strong); background: transparent; }
+
+/* ================================================================ flecha y hover de los botones
+   El sistema base anima una flecha horizontal: en reposo oculta el vástago y en hover lo dibuja
+   desde la izquierda y corre la punta a la derecha. Con la flecha diagonal de la marca eso se veía
+   como "┘" en reposo y la punta se despegaba en hover. Ahora la flecha está siempre completa y en
+   hover se desplaza entera en diagonal, en la dirección en la que apunta. */
+.m3-arrow .m-arrow__stem { opacity: 1; transform: none; }
+.m3-arrow { transition: transform var(--m-out, .2s) var(--m-ease, ease); }
+:is(a, button):is(:hover, :focus-visible) > .m3-arrow :is(.m-arrow__head, .m-arrow__stem) { opacity: 1; transform: none; }
+@media (hover: hover) and (pointer: fine) {
+  :is(a, button):hover > .m3-arrow { transform: translate(2px, 2px); transition-duration: var(--m-in, .15s); }
+}
+:is(a, button):focus-visible > .m3-arrow { transform: translate(2px, 2px); }
+
+/* Hover de los botones principales: un tono más oscuro del mismo color, nunca lavado hacia el
+   fondo (antes el Verde Bosque se volvía gris y el Lima se aclaraba). */
+html:not([data-motion="off"]) .btn--primary:hover { background: color-mix(in oklab, var(--action) 86%, var(--p-ink)); }
+html:not([data-motion="off"]) header.nav .btn--primary:hover { background: color-mix(in oklab, var(--p-bg) 88%, var(--p-accent)); }
