@@ -272,7 +272,7 @@ main > section#servicios { min-height: 0; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 /* En tablet y teléfono el formulario va pegado al título y la ubicación queda debajo. */
 @media (max-width: 639px) {
-  .consulta__formcol { padding: var(--s-5) var(--s-4); margin-inline: calc(-1 * var(--s-2)); }
+  .consulta__formcol { padding: var(--s-5) var(--s-4); }
   .consulta__enviar { width: 100%; }
 }
 @media (max-width: 1023px) {
