@@ -77,7 +77,8 @@ main > section.section:not([data-moment]) > .wrap, footer.closing > .wrap { heig
 
 /* ---------------------------------------------------------------- header en Verde Bosque */
 /* Logo Lima, links Hueso y botón claro; vale también para el menú del teléfono. */
-header.nav {
+/* La barra fija del teléfono (nav.actionbar) usa los mismos colores que el header. */
+header.nav, nav.actionbar {
   --bg: var(--p-accent); --ink: var(--p-inv-ink); --muted: var(--p-inv-muted);
   --action: var(--p-bg); --action-ink: var(--p-accent);
   --line: color-mix(in oklab, var(--p-inv-ink) 16%, transparent);
@@ -85,9 +86,10 @@ header.nav {
   background: var(--bg); color: var(--ink); border-bottom-color: var(--line);
 }
 .nav .nav__bar { gap: var(--s-6); }
-.nav .nav__links { justify-content: flex-end; }
+/* En desktop los links van a la derecha; en el menú del teléfono (columna) quedan arriba. */
+@media (min-width: 1024px) { .nav .nav__links { justify-content: flex-end; } }
 header.nav .nav__toggle { color: var(--ink); border-color: var(--line-strong); background: transparent; }
-html:not([data-motion="off"]) header.nav .btn--primary:hover { background: color-mix(in oklab, var(--p-bg) 88%, var(--p-accent)); }
+html:not([data-motion="off"]) :is(header.nav, nav.actionbar) .btn--primary:hover { background: color-mix(in oklab, var(--p-bg) 88%, var(--p-accent)); }
 
 /* Logo oficial en SVG: Verde Bosque sobre fondos claros, Lima en el header (manual 2.3). */
 svg.logo { display: block; width: auto; color: var(--p-accent); fill: currentColor; }
@@ -206,10 +208,14 @@ header.nav svg.logo { color: var(--p-inv-accent); }
 .cartel__arrow { grid-row: 3 / span 2; grid-column: 2; justify-self: end; width: clamp(44px, 4vw, 64px); height: auto; }
 @media (max-width: 1023px) {
   .servicios__head, .servicios__list { grid-column: 1 / -1; }
-  .cartel { display: none; }
+  .cartel { max-width: 300px; margin-top: var(--s-6); }
 }
 @media (max-width: 639px) {
   .servicios__list li { grid-template-columns: 1fr; gap: var(--s-1); }
+  .cartel { max-width: 240px; padding: var(--s-4); }
+  .cartel__code, .cartel__num { font-size: 48px; }
+  .cartel__word { font-size: 22px; }
+  .cartel__arrow { width: 44px; }
 }
 
 /* ---------------------------------------------------------------- contacto */
