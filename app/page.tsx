@@ -95,7 +95,7 @@ export default function Home() {
                   <img style={{ objectPosition: "50% 75%" }} src="/img/ingreso-oficinas.jpg" alt="Frente vidriado de M3 Depósitos en perspectiva, con el nombre sobre la terraza verde, plantas y vereda de adoquines" width={1290} height={860} loading="lazy" data-source="client" data-subject="las oficinas del frente" />
                 </figure>
                 <h3>Oficinas con terraza verde</h3>
-                <p>Módulos de hasta 50 m² en la planta alta, con áreas comunes, servicios y una terraza verde accesible.</p>
+                <p>Módulos de hasta 50 m² en la planta alta, con áreas comunes, servicios y una terraza verde accesible.</p>
               </li>
               <li className="mo-ph__ch">
                 <figure className="mo-ph__pic">
@@ -109,7 +109,7 @@ export default function Home() {
                   <img src="/img/calle-interna.jpg" alt="Calle interna de hormigón entre dos filas de naves con portones numerados y un camión estacionado" width={1720} height={1147} loading="lazy" data-source="client" data-subject="la calle interna y las naves" />
                 </figure>
                 <h3>Naves sobre la calle interna</h3>
-                <p>Quince naves con portón numerado, piso de hormigón llaneado para alto tránsito y cerramientos con panel Cover.</p>
+                <p>15 naves con portón numerado, piso de hormigón llaneado para alto tránsito y cerramientos con panel <span translate="no">Cover</span>.</p>
               </li>
             </ol>
           </div>

@@ -23,6 +23,11 @@
 /* Esquinas rectas en todo el sitio, como el marco del logo. */
 html[data-radius] { --r-lg: 0px; --r-md: 0px; --r-sm: 0px; --r-btn: 0px; }
 
+/* Toques en el teléfono: sin demora de doble toque y sin el recuadro gris/azul de Android
+   (los botones tienen su propio estado al presionarlos). */
+a, button, label, input, textarea, select { touch-action: manipulation; }
+html { -webkit-tap-highlight-color: transparent; }
+
 /* Los links internos bajan con scroll suave (con "reducir movimiento", system.css lo anula). */
 html { scroll-behavior: smooth; }
 
@@ -236,10 +241,9 @@ header.nav svg.logo { color: var(--p-inv-accent); }
 .interes__opts input { width: 18px; height: 18px; min-height: 0; flex: none; margin: 0; padding: 0; accent-color: var(--action); }
 /* Casilla de consentimiento: el texto es el label; el link a privacidad va aparte. */
 .field--check { grid-column: 1 / -1; }
-.field--check .check { display: flex; gap: var(--s-3); align-items: flex-start; }
+.field--check .check { display: flex; gap: var(--s-3); align-items: flex-start; font: 400 var(--t-small)/1.5 var(--font-text); cursor: pointer; }
 .field--check input { width: 20px; height: 20px; min-height: 0; flex: none; margin: 2px 0 0; padding: 0; accent-color: var(--action); }
-.field--check .check__txt { margin: 0; font: 400 var(--t-small)/1.5 var(--font-text); }
-.field--check label { display: flex; gap: var(--s-3); align-items: flex-start; font: inherit; cursor: pointer; }
+.field--check .check__link { justify-self: start; margin-left: calc(20px + var(--s-3)); font-size: var(--t-small); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 /* En tablet y teléfono el formulario va pegado al título y la ubicación queda debajo. */
 @media (max-width: 1023px) {

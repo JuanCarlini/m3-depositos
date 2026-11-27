@@ -46,7 +46,7 @@ export function ContactForm({ boton, whatsapp }: { boton: string; whatsapp: stri
       mensaje: String(datos.get("mensaje") ?? "").trim(),
     };
     const boton = form.querySelector<HTMLButtonElement>('[type="submit"]');
-    const espera = setTimeout(() => say("Enviando"), 300);
+    const espera = setTimeout(() => say("Enviando…"), 300);
     if (boton) {
       boton.disabled = true;
       boton.setAttribute("aria-busy", "true");
@@ -96,7 +96,7 @@ export function ContactForm({ boton, whatsapp }: { boton: string; whatsapp: stri
       </div>
       <div className="field">
         <label htmlFor="f-email">Email</label>
-        <input id="f-email" name="email" type="email" autoComplete="email" inputMode="email" required maxLength={200} aria-describedby="f-email-err" />
+        <input id="f-email" name="email" type="email" autoComplete="email" inputMode="email" spellCheck={false} required maxLength={200} aria-describedby="f-email-err" />
         <p className="field__error" id="f-email-err" hidden>Escribí un email con @, por ejemplo nombre@empresa.com.ar.</p>
       </div>
       <div className="field">
@@ -109,22 +109,12 @@ export function ContactForm({ boton, whatsapp }: { boton: string; whatsapp: stri
       </div>
       <div className="field field--check">
         {/* El nombre accesible es solo el texto de la casilla; el link a privacidad queda fuera del label. */}
-        <div className="check">
-          <input
-            id="f-acepta"
-            type="checkbox"
-            name="acepta"
-            required
-            aria-labelledby="f-acepta-txt"
-            aria-describedby="f-acepta-err"
-          />
-          <p className="check__txt">
-            <label htmlFor="f-acepta" id="f-acepta-txt">
-              Acepto que M3 Depósitos guarde estos datos para responder mi consulta.
-            </label>{" "}
-            <a className="link" href="/privacidad/">Privacidad</a>
-          </p>
-        </div>
+        {/* La casilla y su texto son un solo label (una sola área de toque); el link queda afuera. */}
+        <label className="check">
+          <input type="checkbox" name="acepta" required aria-describedby="f-acepta-err" />
+          <span className="check__txt">Acepto que M3 Depósitos guarde estos datos para responder mi consulta.</span>
+        </label>
+        <a className="link check__link" href="/privacidad/">Privacidad</a>
         <p className="field__error" id="f-acepta-err" hidden>Marcá la casilla para que podamos guardar tu consulta.</p>
       </div>
       <div className="hp" aria-hidden="true">

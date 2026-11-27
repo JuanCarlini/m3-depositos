@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { preload } from "react-dom";
 import { KitScripts } from "@/components/KitScripts";
 import "./globals.css";
 
@@ -42,7 +43,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#fdfff2",
+  themeColor: "#203b32", // el header es Verde Bosque
 };
 
 /*
@@ -51,6 +52,10 @@ export const viewport: Viewport = {
   hidrata el formulario.
 */
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // Las dos variantes de Supply Mono que se ven en el hero, antes que el resto.
+  for (const peso of ["Regular", "Medium"]) {
+    preload(`/fonts/SupplyMono-${peso}.otf`, { as: "font", type: "font/otf", crossOrigin: "anonymous" });
+  }
   return (
     <html
       lang="es"
