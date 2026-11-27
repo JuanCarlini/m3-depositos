@@ -65,14 +65,14 @@ export const unidades: {
 
 export const precio = "Precio a consultar";
 
-/* Infraestructura del complejo (ficha del proyecto). */
+/* Infraestructura del complejo (ficha del proyecto): primero lo que diferencia a las naves. */
 export const servicios: { titulo: string; texto: string }[] = [
+  { titulo: "Hormigón llaneado", texto: "Pisos de hormigón llaneado preparados para alto tránsito." },
+  { titulo: "Panel Cover", texto: "Cerramientos de las naves con panel Cover." },
+  { titulo: "Entrepisos", texto: "Posibilidad de incorporar entrepisos en las naves." },
   { titulo: "Red de desagües", texto: "Desagües en todo el predio y las calles internas." },
   { titulo: "Alumbrado", texto: "Iluminación en calles internas y accesos." },
   { titulo: "Agua potable", texto: "Conexión de agua potable en cada unidad." },
-  { titulo: "Panel Cover", texto: "Cerramientos de las naves con panel Cover." },
-  { titulo: "Hormigón llaneado", texto: "Pisos de hormigón llaneado preparados para alto tránsito." },
-  { titulo: "Entrepisos", texto: "Posibilidad de incorporar entrepisos en las naves." },
 ];
 
 /*

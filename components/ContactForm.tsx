@@ -122,8 +122,12 @@ export function ContactForm({ boton, whatsapp }: { boton: string; whatsapp: stri
         <input id="f-web" name="empresa_web" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <div className="btn-row">
-        <button className="btn btn--primary" type="submit">
+        <button className="btn btn--primary consulta__enviar" type="submit">
           {boton}
+          <svg className="m-arrow m3-arrow" viewBox="0 0 12 12" aria-hidden="true">
+            <path className="m-arrow__stem" d="M2 2l8 8" />
+            <path className="m-arrow__head" d="M10 3.5V10H3.5" />
+          </svg>
         </button>
       </div>
       <p className="form__status" role="status" data-form-status ref={status} suppressHydrationWarning />

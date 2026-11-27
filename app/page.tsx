@@ -27,6 +27,10 @@ function Flecha() {
 
 export default function Home() {
   const wa = whatsappUrl();
+  const escala = {
+    frente: Math.max(...unidades.map((u) => u.plano.frente)),
+    fondo: Math.max(...unidades.map((u) => u.plano.fondo)),
+  };
   return (
     <>
       <header className="nav">
@@ -115,6 +119,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Escala común de las plantas: la de la unidad más grande. */}
         <section className="section" id="unidades" aria-labelledby="unidades-h">
           <div className="wrap">
             <div className="section-head">
@@ -124,15 +129,19 @@ export default function Home() {
             <ul className="rows rows--spec unidades">
               {unidades.map((u) => (
                 <li key={u.id} id={u.id}>
-                  <div className="unidades__plan" {...(u.plano.ph ? { "data-assumed": "" } : {})}>
+                  <figure className="unidades__plan" {...(u.plano.ph ? { "data-assumed": "" } : {})}>
                     <UnitPlan
-                      codigo={`${u.codigo} 01`}
                       frente={u.plano.frente}
                       fondo={u.plano.fondo}
                       porton={u.plano.porton}
+                      escala={escala}
                       label={`Planta esquemática de ${u.nombre.toLowerCase()}: ${u.plano.frente} m de frente por ${u.plano.fondo} m de fondo`}
                     />
-                  </div>
+                    <figcaption className="unidades__m2">
+                      <span className="unidades__tipo">Tipo {u.codigo}</span>
+                      {u.superficie}
+                    </figcaption>
+                  </figure>
                   <div className="unidades__body">
                     <h3>{u.nombre}</h3>
                     <p>{u.descripcion}</p>
@@ -141,7 +150,6 @@ export default function Home() {
                     </a>
                   </div>
                   <dl className="unidades__data">
-                    <div><dt>Superficie</dt><dd>{u.superficie}</dd></div>
                     <div><dt>Características</dt><dd>{u.detalle}</dd></div>
                   </dl>
                 </li>
@@ -156,7 +164,7 @@ export default function Home() {
               <div className="section-head servicios__head">
                 <h2 id="servicios-h">Infraestructura del complejo</h2>
                 <p>Servicios y terminaciones que tienen las naves de todo el desarrollo.</p>
-                <Cartel codigo="N" numero="01" palabra="Naves" />
+                <Cartel codigo="N" numero="01" palabra="Naves" href="#naves" />
               </div>
               <ul className="servicios__list">
                 {servicios.map((s) => (
